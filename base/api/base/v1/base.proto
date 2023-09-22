@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package api.base.v1;
+
+import "google/api/annotations.proto";//必加import，不然接口爆红
+
+option go_package = "base/api/base/v1;v1";
+option java_multiple_files = true;
+option java_package = "api.base.v1";
+
+
+//定义了操作
+service Base {
+	rpc CreateBase (CreateBaseRequest) returns (CreateBaseReply){
+		option (google.api.http)={
+			get: "hi/hello/{name}"//定义接口网址
+			additional_bindings{
+				post:"hi/{id}/hero/{account}"//添加接口
+				body:"*"//网站内部
+			}
+		};
+
+	};
+	rpc UpdateBase (UpdateBaseRequest) returns (UpdateBaseReply);
+	rpc DeleteBase (DeleteBaseRequest) returns (DeleteBaseReply);
+	rpc GetBase (GetBaseRequest) returns (GetBaseReply);
+	rpc ListBase (ListBaseRequest) returns (ListBaseReply);
+}
+
+//数据的定义
+message CreateBaseRequest {
+	int64 	id =1;
+	string 	name =2;
+	string  account =3;
+	int64   student_id =4;
+}
+message CreateBaseReply {
+	int64		aldigaga =1;
+	string  woshigod =2;
+}
+//使用make api
+message UpdateBaseRequest {}
+message UpdateBaseReply {}
+
+message DeleteBaseRequest {}
+message DeleteBaseReply {}
+
+message GetBaseRequest {}
+message GetBaseReply {}
+
+message ListBaseRequest {}
+message ListBaseReply {}

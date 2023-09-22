@@ -1,0 +1,53 @@
+# Generated with protoc-gen-openapi
+# https://github.com/google/gnostic/tree/master/cmd/protoc-gen-openapi
+
+openapi: 3.0.3
+info:
+    title: Base API
+    description: 定义了操作
+    version: 0.0.1
+paths:
+    hi/hello/{name}:
+        get:
+            tags:
+                - Base
+            operationId: Base_CreateBase
+            parameters:
+                - name: name
+                  in: path
+                  required: true
+                  schema:
+                    type: string
+                - name: id
+                  in: query
+                  schema:
+                    type: integer
+                    format: int64
+                - name: account
+                  in: query
+                  schema:
+                    type: string
+                - name: studentId
+                  in: query
+                  schema:
+                    type: integer
+                    format: int64
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/api.base.v1.CreateBaseReply'
+components:
+    schemas:
+        api.base.v1.CreateBaseReply:
+            type: object
+            properties:
+                aldigaga:
+                    type: integer
+                    format: int64
+                woshigod:
+                    type: string
+tags:
+    - name: Base
